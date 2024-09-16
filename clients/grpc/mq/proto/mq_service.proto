@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ibm.mq;
+
+option go_package = "./ibm_mq;ibm_mq";
+
+service MqGrpcService {
+  rpc sendAndReceive(BasicRequest) returns (BasicResponse);
+}
+
+message BasicRequest {
+  string queueManagerName = 1;
+  string queueManagerHost = 2;
+  uint32 queueManagerPort = 3;
+  string queueManagerChannel = 4;
+  string requestQueue = 5;
+  string responseQueue = 6;
+  uint32 timeout = 7;
+  string rqUid = 8;
+  string serviceName = 9;
+  string message = 10;
+}
+
+message BasicResponse {
+  uint32 responseCode = 1;
+  string message = 2;
+}
