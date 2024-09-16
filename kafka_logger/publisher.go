@@ -48,6 +48,7 @@ func NewKafkaLogger(stage Stage, kafkaConfig ...KafkaLogConfig) Publisher {
 
 	return &publisher{
 		writer: writer,
+		topic:  cfg.Topic,
 	}
 }
 
